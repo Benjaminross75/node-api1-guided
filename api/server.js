@@ -1,11 +1,13 @@
 // IMPORTS AT THE TOP
-
+const express = require('express')
 // INSTANCE OF EXPRESS APP
-
+const server = express()
 // GLOBAL MIDDLEWARE
-
+server.use(express.json())
 // ENDPOINTS
-
+server.get('/hello-world',(req, res)=>{
+  res.status(200).json({message: "hello, world" })
+})
 // [GET]    /             (Hello World endpoint)
 // [GET]    /api/dogs     (R of CRUD, fetch all dogs)
 // [GET]    /api/dogs/:id (R of CRUD, fetch dog by :id)
@@ -14,3 +16,4 @@
 // [DELETE] /api/dogs/:id (D of CRUD, remove dog with :id)
 
 // EXPOSING THE SERVER TO OTHER MODULES
+module.exports = server
